@@ -10,7 +10,21 @@ else
   echo "Finished restoring the database."
 fi
 
-echo "Starting litestream & linkding service."
+# Load cron configuration.
+crontab /etc/linkding/crontab
+echo "Cron has been configured." >> /var/log/cron.log
+
+# Start cron as a daemon.
+cron
+echo "Cron has been started." >> /var/log/cron.log
+
+# Define storage lifecycle for daily backup bucket
+aws s3api put-bucket-lifecycle-configuration \
+    --bucket [your-bucket] \
+    --lifecycle-configuration file:///scripts/spaces-lifecycle.json \
+    --endpoint=[your-endpoint]
+
+echo "Starting Litestream & Linkding service."
 
 # Run litestream with your app as the subprocess.
 exec litestream replicate -exec "/etc/linkding/bootstrap.sh"

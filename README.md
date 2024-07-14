@@ -42,4 +42,4 @@ flyctl launch
 
 ## Create daily snapshots and save them to another S3-compatible bucket
 
-TODO
+Configure things in `backup.sh` and you should be good to go.

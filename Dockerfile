@@ -23,7 +23,23 @@ COPY uwsgi.ini /etc/linkding/uwsgi.ini
 
 # Copy startup script and make it executable.
 COPY scripts/run.sh /scripts/run.sh
+COPY scripts/backup.sh /scripts/backup.sh
+COPY scripts/spaces-lifecycle.json /scripts/spaces-lifecycle.json
 RUN chmod +x /scripts/run.sh
+RUN chmod +x /scripts/backup.sh
+
+# Copy cron configuration
+COPY crontab /etc/linkding/crontab
+
+# Install cron, SQLite, and unzip
+RUN apt-get install -y cron && \
+  apt-get install sqlite3 && \
+  apt-get install unzip
+
+# Install AWS CLI
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+  unzip awscliv2.zip && \
+  ./aws/install
 
 # Litestream spawns linkding's webserver as subprocess.
 CMD ["/scripts/run.sh"]

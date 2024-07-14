@@ -1,0 +1,14 @@
+{
+  "Rules": [
+    {
+      "ID": "Delete older daily backups",
+      "Filter": {
+        "Prefix": "linkding/"
+      },
+      "Status": "Enabled",
+      "Expiration": {
+        "Days": 30
+      }
+    }
+  ]
+}

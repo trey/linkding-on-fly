@@ -1,0 +1,12 @@
+<LifecycleConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <Rule>
+  <ID>Delete older daily backups</ID>
+  <Filter>
+    <Prefix>linkding/</Prefix>
+  </Filter>
+  <Status>Enabled</Status>
+  <Expiration>
+    <Days>30</Days>
+  </Expiration>
+  </Rule>
+</LifecycleConfiguration>

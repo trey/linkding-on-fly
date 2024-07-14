@@ -1,0 +1,2 @@
+# 5am Eastern US time every day
+0 9 * * * /scripts/backup.sh
