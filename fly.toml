@@ -1,0 +1,26 @@
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+
+app = ''
+primary_region = ''
+
+[build]
+
+[env]
+  DB_PATH = '/etc/linkding/data/db.sqlite3'
+  LD_SERVER_PORT = '8080'
+  S3_DB_URL = '${S3_DB_URL}'
+
+[[mounts]]
+  source = 'linkding_data'
+  destination = '/etc/linkding/data'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1

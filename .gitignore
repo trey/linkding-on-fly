@@ -1,2 +1,2 @@
-/fly.toml
-/.env
+.env
+*.sqlite3
