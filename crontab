@@ -1,2 +1,5 @@
+# For debugging if needed. Runs every minute.
+# */1 * * * * /scripts/backup.sh >> /var/log/cron.log 2>&1
+
 # 5am Eastern US time every day
 0 9 * * * /scripts/backup.sh

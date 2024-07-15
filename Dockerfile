@@ -31,10 +31,11 @@ RUN chmod +x /scripts/backup.sh
 # Copy cron configuration
 COPY crontab /etc/linkding/crontab
 
-# Install cron, SQLite, and unzip
+# Install cron, SQLite, unzip, and Vim
 RUN apt-get install -y cron && \
   apt-get install sqlite3 && \
-  apt-get install unzip
+  apt-get install unzip && \
+  apt-get install -y vim
 
 # Install AWS CLI
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
