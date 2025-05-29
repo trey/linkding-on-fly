@@ -32,7 +32,8 @@ RUN chmod +x /scripts/backup.sh
 COPY crontab /etc/linkding/crontab
 
 # Install cron, SQLite, unzip, and Vim
-RUN apt-get install -y cron && \
+RUN apt-get update && \
+  apt-get install -y cron && \
   apt-get install sqlite3 && \
   apt-get install unzip && \
   apt-get install -y vim
