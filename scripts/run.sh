@@ -20,7 +20,7 @@ echo "Cron has been started." >> /var/log/cron.log
 
 printf "AWS_ACCESS_KEY_ID=%s\n" $AWS_ACCESS_KEY_ID >> /etc/environment
 printf "AWS_SECRET_ACCESS_KEY=%s\n" $AWS_SECRET_ACCESS_KEY >> /etc/environment
-printf "UPTIME_COMMAND=%s\n" $UPTIME_COMMAND >> /etc/environment
+printf "UPTIME_COMMAND=%s\n" "$UPTIME_COMMAND" >> /etc/environment
 
 # Define storage lifecycle for daily backup bucket
 aws s3api put-bucket-lifecycle-configuration \
