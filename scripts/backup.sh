@@ -5,6 +5,9 @@ set -e
 
 mkdir -p /tmp
 
+# Delete the previous backup if it exists (`-f` in case it doesn't exist)
+rm -f /tmp/backup.sqlite3.gz
+
 # Backup & compress our database to the tmp directory
 sqlite3 /etc/linkding/data/db.sqlite3 '.backup /tmp/backup.sqlite3'
 gzip /tmp/backup.sqlite3
